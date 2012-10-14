@@ -7,17 +7,17 @@
 	<key>command</key>
 	<string>#!/bin/bash
 . "$TM_SUPPORT_PATH/lib/bash_init.sh"
+: ${TM_GOFMT:=gofmt}
+require_cmd "$TM_GOFMT"
 
-require_cmd gofmt
 
 GOFMT_SPACING="-tabwidth=$TM_TAB_SIZE"
 if [[ "$TM_SOFT_TABS" = "YES" ]]; then
 	GOFMT_SPACING="-spaces $GOFMT_SPACING"
 fi
 
-if ! gofmt $GOFMT_SPACING 2&gt;&amp;1; then
-	exit_show_tool_tip
-fi
+"$TM_GOFMT" $GOFMT_FLAGS 2&gt;&amp;1 ||
+exit_show_tool_tip
 </string>
 	<key>input</key>
 	<string>document</string>

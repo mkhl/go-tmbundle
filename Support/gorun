@@ -4,4 +4,4 @@
 
 set -e
 
-go run "$*"
+"$TM_GO" run "$*"

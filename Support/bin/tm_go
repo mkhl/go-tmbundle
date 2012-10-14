@@ -1,10 +1,10 @@
 #!/bin/bash
-
-require_cmd go
+: ${TM_GO:=go}
+require_cmd "$TM_GO"
 
 case "$*" in
 --version)
-	exec go version
+	exec "$TM_GO" version
 	;;
 esac
 

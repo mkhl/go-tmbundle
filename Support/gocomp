@@ -4,5 +4,5 @@
 
 set -e
 
-go build -o /dev/null "$*" 1>&2
+"$TM_GO" build -o /dev/null "$*" 1>&2
 echo "Build succeeded."
