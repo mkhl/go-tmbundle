@@ -8,8 +8,12 @@ case "$*" in
 	;;
 esac
 
-if [[ -d "$TM_PROJECT_DIRECTORY" ]]; then
-	cd "$TM_PROJECT_DIRECTORY"
-elif [[ -d "$TM_DIRECTORY" ]]; then
-	cd "$TM_DIRECTORY"
-fi
+require_project () {
+	if [[ -d "$TM_PROJECT_DIRECTORY" ]]; then
+		cd "$TM_PROJECT_DIRECTORY"
+	elif [[ -d "$TM_DIRECTORY" ]]; then
+		cd "$TM_DIRECTORY"
+	else
+		exit_show_tool_tip "Project required"
+	fi
+}
