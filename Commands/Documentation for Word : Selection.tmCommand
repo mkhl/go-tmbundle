@@ -8,6 +8,7 @@
 	<string>#!/bin/bash
 
 require_cmd godoc
+. "$TM_SUPPORT_PATH/lib/bash_init.sh"
 
 word="`cat | sed 's!\.! !g'`"
 
