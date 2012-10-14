@@ -13,19 +13,21 @@ module Go
     File.join(base, file)
   end
 
-  def Go::href(file, line)
+  def Go::href(file, line, column)
     file = normalize_file(file)
-    link = "txmt://open?line=#{line}"
-    link << "&url=file://#{e_url(file)}"  if file
-    link
+    parts = []
+    parts << "line=#{line}"  if line
+    parts << "column=#{column}"  if column
+    parts << "url=file://#{e_url(file)}"  if file
+    "txmt://open?#{parts.join("&")}"
   end
 
   def Go::link_errs(str, type)
     return  unless type == :err
     xml = Builder::XmlMarkup.new
-    str.gsub!(/^(.+):(\d+):\s+(.+)$/) do
-      file, line, msg = $1, $2, $3
-      xml.a("#{htmlize(File.basename(file))}:#{line}", :href => href(file, line))
+    str.gsub! /^((.+?):(\d+)(?::(\d+))?):\s+(.+)$/ do
+      addr, file, line, col, msg = $1, $2, $3, $4, $5
+      xml.a("#{htmlize(File.basename(addr))}", :href => href(file, line, col))
       xml.text(': ')
       xml.span(htmlize(msg), :class => "err")
       xml.br
