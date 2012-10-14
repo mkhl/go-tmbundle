@@ -1,22 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/bash
 . "$TM_SUPPORT_PATH/lib/bash_init.sh"
-
-. gobin
-. goversion
-
-require_cmd "$GC"
-require_cmd "$GT"
-
-SOURCE="$*"
-TARGET="/dev/null"
+. tm_go
 
 set -e
 
-if [[ -n "$TM_PROJECT_DIRECTORY" ]]; then
-	cd "$TM_PROJECT_DIRECTORY"
-elif [[ -n "$TM_DIRECTORY" ]]; then
-	cd "$TM_DIRECTORY"
-fi
-
-"$GT" 2>&1
-echo "Testing complete."
+go test 2>&1
+echo "Test succeeded."

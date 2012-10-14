@@ -1,23 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/bash
 . "$TM_SUPPORT_PATH/lib/bash_init.sh"
-
-. gobin
-. goroot
-. goversion
-
-require_cmd "$GC"
-require_cmd "$MK"
-
-SOURCE="$*"
-TARGET="/dev/null"
+. tm_go
 
 set -e
 
-if [[ -n "$TM_PROJECT_DIRECTORY" ]]; then
-	"$MK" -C "$TM_PROJECT_DIRECTORY"
-elif [[ -n "$TM_DIRECTORY" ]]; then
-	"$MK" -C "$TM_DIRECTORY"
-else
-	"$GC" -o "$TARGET" "$SOURCE" 1>&2
-fi
+go build 1>&2
 echo "Build succeeded."

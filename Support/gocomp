@@ -1,15 +1,8 @@
-#!/usr/bin/env bash
+#!/bin/bash
 . "$TM_SUPPORT_PATH/lib/bash_init.sh"
-
-. gobin
-. goversion
-
-require_cmd "$GC"
-
-SOURCE="$*"
-TARGET="/dev/null"
+. tm_go
 
 set -e
 
-"$GC" -o "$TARGET" "$SOURCE" 1>&2
+go build -o /dev/null "$*" 1>&2
 echo "Build succeeded."
