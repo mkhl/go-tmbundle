@@ -13,15 +13,23 @@ gomate "gomake", "Building"
 </string>
 	<key>input</key>
 	<string>document</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
 	<string>@b</string>
 	<key>name</key>
 	<string>Build</string>
-	<key>output</key>
-	<string>showAsHTML</string>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>html</string>
+	<key>outputLocation</key>
+	<string>newWindow</string>
 	<key>scope</key>
 	<string>source.go</string>
 	<key>uuid</key>
 	<string>20810F68-79E2-4D36-B222-6374BDEAB7B9</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>

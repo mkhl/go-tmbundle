@@ -113,15 +113,23 @@ end</string>
 	<string>word</string>
 	<key>input</key>
 	<string>document</string>
+	<key>inputFormat</key>
+	<string>text</string>
 	<key>keyEquivalent</key>
 	<string></string>
 	<key>name</key>
 	<string>Complete</string>
-	<key>output</key>
+	<key>outputCaret</key>
+	<string>afterOutput</string>
+	<key>outputFormat</key>
+	<string>text</string>
+	<key>outputLocation</key>
 	<string>discard</string>
 	<key>scope</key>
 	<string>source.go</string>
 	<key>uuid</key>
 	<string>FE908865-7729-4926-9FAC-2D54895BEA48</string>
+	<key>version</key>
+	<integer>2</integer>
 </dict>
 </plist>
