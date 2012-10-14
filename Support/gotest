@@ -4,5 +4,4 @@
 
 set -e
 
-"$TM_GO" test 2>&1
-echo "Test succeeded."
+"$TM_GO" test
