@@ -10,10 +10,9 @@
 : ${TM_GOFMT:=gofmt}
 require_cmd "$TM_GOFMT"
 
-
-GOFMT_SPACING="-tabwidth=$TM_TAB_SIZE"
-if [[ "$TM_SOFT_TABS" = "YES" ]]; then
-	GOFMT_SPACING="-spaces $GOFMT_SPACING"
+GOFMT_FLAGS="-tabwidth=$TM_TAB_SIZE"
+if [[ "$TM_SOFT_TABS" == "YES" ]]; then
+	GOFMT_FLAGS="-tabs=false $GOFMT_FLAGS"
 fi
 
 "$TM_GOFMT" $GOFMT_FLAGS 2&gt;&amp;1 ||
