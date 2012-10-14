@@ -1,0 +1,9 @@
+#!/bin/bash
+. "$TM_SUPPORT_PATH/lib/bash_init.sh"
+. tm_go
+
+require_project
+
+set -e
+
+"$TM_GO" vet "$*"
