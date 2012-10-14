@@ -5,14 +5,14 @@ require "#{ENV['TM_SUPPORT_PATH']}/lib/escape"
 require "pathname"
 
 module Go
-  def Go::normalize_file(file)
+  def self.normalize_file(file)
     return nil  if file == 'untitled'
     return file if Pathname.new(file).absolute?
     base = ENV['TM_PROJECT_DIRECTORY'] || ENV['TM_DIRECTORY'] || Dir.getwd
     File.join(base, file)
   end
 
-  def Go::href(file, line, column)
+  def self.href(file, line, column)
     file = normalize_file(file)
     parts = []
     parts << "line=#{line}"  if line
@@ -21,7 +21,7 @@ module Go
     "txmt://open?#{parts.join("&")}"
   end
 
-  def Go::link_errs(str, type)
+  def self.link_errs(str, type)
     return  unless type == :err
     xml = Builder::XmlMarkup.new
     str.gsub! /^((.+?):(\d+)(?::(\d+))?):\s+(.+)$/ do
